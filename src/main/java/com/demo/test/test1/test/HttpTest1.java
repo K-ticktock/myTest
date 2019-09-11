@@ -27,7 +27,7 @@ public class HttpTest1 {
         String param = JSON.toJSONString(req);
         System.out.println(param);
 
-        String uri = "https://test2.mcsca.com.cn/sicpap-inter/service/datasecurity/token";
+        String uri = "https://183.66.184.22:30022/sicpap-inter/service/datasecurity/token";
         String entity = "param="+param;
 
         String res = HttpPostTool.sendHttpPost(uri,entity);
