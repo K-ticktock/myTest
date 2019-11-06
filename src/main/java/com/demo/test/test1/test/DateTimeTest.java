@@ -5,6 +5,7 @@ import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 public class DateTimeTest {
     public static void main(String[] args){
@@ -20,5 +21,8 @@ public class DateTimeTest {
         System.out.println(time);
 
         System.out.println(clock.millis());
+
+        Date date = new Date(20191016);
+        System.out.println(date);
     }
 }
