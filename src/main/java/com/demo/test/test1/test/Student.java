@@ -37,4 +37,13 @@ public class Student {
     public void setNum(int num) {
         this.num = num;
     }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id=" + id +
+                ", age=" + age +
+                ", num=" + num +
+                '}';
+    }
 }

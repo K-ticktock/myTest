@@ -2,10 +2,8 @@ package com.demo.test.test1.test;
 
 import org.springframework.beans.BeanUtils;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class TestListMerge {
     public static void main(String[] args){
@@ -23,6 +21,20 @@ public class TestListMerge {
         list1.add(st4);
         list1.add(st5);
         System.out.println(list1);
+        Map<String,List<Student>> map = list1.stream().collect(Collectors.groupingBy(student -> group(student)));
+        System.out.println(map);
+
+        List<Student> list3 = new ArrayList<>();
+        list1.stream().collect(Collectors.groupingBy(student -> group(student))).forEach((K,V)->{
+            Student newStudent = V.get(0);
+            int num = 0;
+            for(Student st:V){
+                num+=st.getNum();
+            }
+            newStudent.setNum(num);
+            list3.add(newStudent);
+        });
+        System.out.println(list3);
         //合并重复数据
         HashMap<String,Student> tempMap = new HashMap<>();
         Iterator<Student> iterator = list1.iterator();
@@ -64,5 +76,8 @@ public class TestListMerge {
         System.out.println(list1);
         System.out.println(list2);
         System.out.println(end-start);
+    }
+    private static String group(Student student){
+        return ""+student.getId();
     }
 }
