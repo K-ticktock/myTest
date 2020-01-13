@@ -40,21 +40,32 @@ public class ReadExcelPOI {
                 int lastRowIndex = sheet.getLastRowNum();
                 System.out.println("firstRowIndex: "+firstRowIndex);
                 System.out.println("lastRowIndex: "+lastRowIndex);
-
-//                for(int rIndex = firstRowIndex; rIndex <= lastRowIndex; rIndex++) {   //遍历行
-//                    System.out.println("rIndex: " + rIndex);
-//                    Row row = sheet.getRow(rIndex);
-//                    if (row != null) {
-//                        int firstCellIndex = row.getFirstCellNum();
-//                        int lastCellIndex = row.getLastCellNum();
-//                        for (int cIndex = firstCellIndex; cIndex < lastCellIndex; cIndex++) {   //遍历列
-//                            Cell cell = row.getCell(cIndex);
-//                            if (cell != null) {
-//                                System.out.println(cell.toString());
-//                            }
-//                        }
-//                    }
-//                }
+                //遍历打印Excel信息
+                for(int rIndex = firstRowIndex; rIndex <= lastRowIndex; rIndex++) {   //遍历行
+                    System.out.println("rIndex: " + rIndex);
+                    Row row = sheet.getRow(rIndex);
+                    if (row != null) {
+                        int firstCellIndex = row.getFirstCellNum();
+                        int lastCellIndex = row.getLastCellNum();
+                        for (int cIndex = firstCellIndex; cIndex < lastCellIndex; cIndex++) {   //遍历列
+                            Cell cell = row.getCell(cIndex);
+                            if (cell != null) {
+                                System.out.println(cell.toString());
+                            }
+                        }
+                    }
+                }
+                //获取Excel中的函数值
+                Row hrow = sheet.getRow(lastRowIndex-1);
+                Cell hcell = hrow.getCell(3);
+                String sss;
+                try {
+                    sss = String.valueOf(hcell.getNumericCellValue());
+                }catch (IllegalStateException e){
+                    sss = String.valueOf(hcell.getRichStringCellValue());
+                }
+                System.out.println(sss);
+                //Excel中写入值
                 for(int rIndex = 2; rIndex <lastRowIndex-1;rIndex++){
                     System.out.println("rIndex: "+ rIndex);
                     Row row = sheet.getRow(rIndex);
@@ -64,10 +75,6 @@ public class ReadExcelPOI {
                         cell.setCellValue("sucess");
                     }
                 }
-                Row hrow = sheet.getRow(lastRowIndex-1);
-                Cell hcell = hrow.getCell(3);
-                String sss = String.valueOf(hcell.getNumericCellValue());
-                System.out.println(sss);
                 OutputStream outputStream = new FileOutputStream(excel);
                 wb.write(outputStream);
             }else {
