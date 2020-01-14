@@ -7,26 +7,32 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.OutputStream;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 public class ReadExcelPOI {
     private static final String EXCEL_XLS = "xls";
     private static final String EXCEL_XLSX = "xlsx";
+    private static final String FILE_SUFFIX = ".xls";
+    private static final String HANDLE = "处理结果";
     public static void main(String[] args){
 //        String execlPath = "/Users/jiaozheng/Documents/Java/JavaTestFile/datadict.xls";
-        String execlPath = "/Users/jiaozheng/Documents/Java/JavaTestFile/12000第九次.xls";
+        String execlPath = "/Users/jiaozheng/Documents/Java/JavaTestFile/12000第九次"+FILE_SUFFIX;
+        String execlDestPath = "/Users/jiaozheng/Documents/Java/JavaTestFile/12000第九次"+HANDLE+FILE_SUFFIX;
+        OutputStream outputStream = null;
+        FileInputStream fis = null;
         try {
             File excel = new File(execlPath);
+            File excelDest = new File(execlDestPath);
+//            Files.copy(excel.toPath(),excelDest.toPath());
             //判断文件是否存在
             if(excel.isFile()&&excel.exists()){
                 String[] split = excel.getName().split("\\.");
                 Workbook wb;
                 //根据文件后缀（xls/xlsx）判断
                 if (EXCEL_XLS.equals(split[1])){
-                    FileInputStream fis = new FileInputStream(excel);
+                    fis = new FileInputStream(excel);
                     wb = new HSSFWorkbook(fis);
                 }else if (EXCEL_XLSX.equals(split[1])){
                     wb = new XSSFWorkbook(excel);
@@ -75,13 +81,30 @@ public class ReadExcelPOI {
                         cell.setCellValue("sucess");
                     }
                 }
-                OutputStream outputStream = new FileOutputStream(excel);
+                outputStream= new FileOutputStream(excelDest);
                 wb.write(outputStream);
             }else {
                 System.out.println("找不到指定的文件");
             }
         }catch (Exception e){
             e.printStackTrace();
+        }finally {
+            if(fis!=null){
+                try {
+                    fis.close();
+                }catch (IOException e){
+                    e.printStackTrace();
+                }
+            }
+            if(outputStream!=null){
+                try {
+                    outputStream.flush();
+                    outputStream.close();
+                }catch (IOException e){
+                    e.printStackTrace();
+                }
+
+            }
         }
     }
 }
