@@ -23,7 +23,7 @@ public class TestController {
     public void reportTest1(HttpServletRequest request, HttpServletResponse response){
         List<Map> dataList = new ArrayList<>();
         Map map1 = new HashMap();
-        map1.put("name","zhangsan");
+        map1.put("name","张三");
         map1.put("old","20");
         Map map2 = new HashMap();
         map2.put("name","lisi");
