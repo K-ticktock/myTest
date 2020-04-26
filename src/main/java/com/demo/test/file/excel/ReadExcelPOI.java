@@ -18,8 +18,8 @@ public class ReadExcelPOI {
     private static final String HANDLE = "处理结果";
     public static void main(String[] args){
 //        String execlPath = "/Users/jiaozheng/Documents/Java/JavaTestFile/datadict.xls";
-        String execlPath = "/Users/jiaozheng/Documents/Java/JavaTestFile/12000第九次"+FILE_SUFFIX;
-        String execlDestPath = "/Users/jiaozheng/Documents/Java/JavaTestFile/12000第九次"+HANDLE+FILE_SUFFIX;
+        String execlPath = "/Users/jiaozheng/Documents/Java/JavaTestFile/test1"+FILE_SUFFIX;
+        String execlDestPath = "/Users/jiaozheng/Documents/Java/JavaTestFile/test1"+HANDLE+FILE_SUFFIX;
         OutputStream outputStream = null;
         FileInputStream fis = null;
         try {

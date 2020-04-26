@@ -3,6 +3,7 @@ package com.demo.test.test1.collection;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
+import java.util.List;
 
 public class HashSetTest {
     public static void main(String[] args){
@@ -28,5 +29,11 @@ public class HashSetTest {
 
         System.out.println(collection1==collection2);
         System.out.println(collection1.equals(collection2));
+
+
+        List list = null;
+        System.out.println(list.isEmpty());
+        System.out.println(list.size() == 0);
+
     }
 }
