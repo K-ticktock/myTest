@@ -1,9 +1,6 @@
 package com.demo.test.test1.collection;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class MapTest {
@@ -42,8 +39,13 @@ public class MapTest {
             }
         }
         System.out.println(mapMap);
-        mapMap.entrySet().iterator();
-        System.out.println(mapMap.values().stream().collect(Collectors.toList()));
+        Iterator iterator = mapMap.values().iterator();
+        while (iterator.hasNext()){
+            System.out.println(iterator.next());
+        }
+        mapMap.values().toArray();
+        List<Map> list =  mapMap.values().stream().collect(Collectors.toList());
+        System.out.println(list);
     }
 
 }
