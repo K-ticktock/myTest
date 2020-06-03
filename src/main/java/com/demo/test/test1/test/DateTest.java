@@ -11,8 +11,16 @@ public class DateTest {
         String str1 = format1.format(date1);
         try {
             Date date2 = format1.parse("20190808");
+            Date d1 = format1.parse("20200101");
+            Date d2 = format1.parse("20200205");
+            long l1 = d1.toInstant().toEpochMilli();
+            long l2 = d2.toInstant().toEpochMilli();
+            long l3 = (l2-l1)/(1000*60*60*24);
+            System.out.println(l3);
         } catch (ParseException e) {
 
         }
+
+
     }
 }

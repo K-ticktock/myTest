@@ -21,7 +21,7 @@ public class TestListMerge {
         list1.add(st4);
         list1.add(st5);
         System.out.println(list1);
-        Map<String,List<Student>> map = list1.stream().collect(Collectors.groupingBy(student -> group(student)));
+        Map<String,List<Student>> map = list1.stream().collect(Collectors.groupingBy(s -> group(s)));
         System.out.println(map);
 
         List<Student> list3 = new ArrayList<>();

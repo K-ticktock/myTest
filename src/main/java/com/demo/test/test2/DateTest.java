@@ -5,6 +5,7 @@ import java.util.Date;
 public class DateTest {
     public static void main(String[] args) {
         Date date = new Date();
+        date.setMinutes(05);
         System.out.println(date);
         System.out.println(date.getMonth()+1+"yue"+date.getDate()+"tian"+date.getHours()+":"+date.getMinutes());
         String ss = "123456789";

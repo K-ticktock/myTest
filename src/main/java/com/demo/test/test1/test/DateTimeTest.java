@@ -11,7 +11,12 @@ public class DateTimeTest {
     public static void main(String[] args){
         Clock clock = Clock.systemUTC();
         LocalDateTime localDateTime = LocalDateTime.now();
+        localDateTime = LocalDateTime.of(2020,01,01,01,01);
         System.out.println(localDateTime);
+        System.out.println(String.format("%02d",localDateTime.getMonthValue())
+        +String.format("%02d",localDateTime.getDayOfMonth())
+        +String.format("%02d",localDateTime.getHour())
+        +String.format("%02d",localDateTime.getMinute()));
         System.out.println(""+localDateTime.getMonthValue()+localDateTime.getDayOfMonth()+localDateTime.getHour()+localDateTime.getMinute());
 
         System.out.println(Instant.now().toEpochMilli());
